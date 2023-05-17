@@ -1,4 +1,5 @@
 import Hotel from "../models/Hotel.js";
+import Room from "../models/Room.js";
 
 // Create Hotel
 export const createHotel = async (req, res, next) => {
@@ -50,10 +51,66 @@ export const getHotel = async (req, res, next) => {
 
 // Get Hotels
 export const getHotels = async (req, res, next) => {
+  const { min, max, limit, ...otherQuery } = req.query;
   try {
-    const hotels = await Hotel.find();
+    console.log(req.query);
+    const hotels = await Hotel.find({
+      ...otherQuery,
+      cheapestPrice: { $gte: min || 1, $lte: max || 999 },
+    }).limit(limit);
+    console.log(hotels);
     res.status(200).json(hotels);
   } catch (err) {
     next(err);
+  }
+};
+
+// countbycity
+export const countByCity = async (req, res, next) => {
+  const cities = req.query.cities.split(",");
+  try {
+    const list = await Promise.all(
+      cities.map((city) => {
+        return Hotel.countDocuments({ city: city });
+      })
+    );
+    res.status(200).json(list);
+  } catch (err) {
+    next(err);
+  }
+};
+// countbytype
+export const countByType = async (req, res, next) => {
+  try {
+    const hotelCount = await Hotel.countDocuments({ type: "hotel" });
+    const apartmentCount = await Hotel.countDocuments({ type: "apartment" });
+    const resortCount = await Hotel.countDocuments({ type: "resort" });
+    const villaCount = await Hotel.countDocuments({ type: "villa" });
+    const cabinCount = await Hotel.countDocuments({ type: "cabin" });
+
+    res.status(200).json([
+      { type: "hotel", count: hotelCount },
+      { type: "apartment", count: apartmentCount },
+      { type: "resort", count: resortCount },
+      { type: "villa", count: villaCount },
+      { type: "cabin", count: cabinCount },
+    ]);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getHotelRooms = async (req, res, next) => {
+  try {
+    const hotel = await Hotel.findById(req.params.id);
+    console.log(hotel.rooms);
+    const list = await Promise.all(
+      hotel.rooms?.map((room) => {
+        return Room.findById(room);
+      })
+    );
+    res.status(200).json(list);
+  } catch (error) {
+    next(error);
   }
 };

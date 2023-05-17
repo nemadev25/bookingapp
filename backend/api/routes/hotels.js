@@ -2,9 +2,12 @@ import express from "express";
 import Hotel from "../models/Hotel.js";
 import { createError } from "../utils/error.js";
 import {
+  countByCity,
+  countByType,
   createHotel,
   deleteHotel,
   getHotel,
+  getHotelRooms,
   getHotels,
   updateHotel,
 } from "../controllers/hotelController.js";
@@ -23,10 +26,13 @@ router.put("/:id", verifyAdmin, updateHotel);
 router.delete("/:id", verifyAdmin, deleteHotel);
 
 // GET
-router.get("/:id", getHotel);
+router.get("/find/:id", getHotel);
 
 // GET ALL
 
 router.get("/", getHotels);
+router.get("/countByCity", countByCity);
+router.get("/countByType", countByType);
+router.get("/rooms/:id", getHotelRooms);
 
 export default router;
