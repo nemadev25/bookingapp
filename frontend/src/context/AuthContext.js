@@ -18,7 +18,9 @@ const AuthReducer = (state, action) => {
       };
     case "LOGIN_SUCCESS":
       return {
-        user: action.payload,
+        user: action.payload.isAdmin
+          ? { ...action.payload.details, isAdmin: action.payload.isAdmin }
+          : action.payload.details,
         loading: false,
         error: null,
       };
