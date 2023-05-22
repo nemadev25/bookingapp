@@ -4,6 +4,7 @@ import Navbar from "../../../components/admin/navbar/Navbar";
 import Sidebar from "../../../components/admin/sidebar/Sidebar";
 import Widget from "../../../components/admin/widget/Widget";
 import "./admin.css";
+import Table from "../../../components/admin/table/Table";
 
 const Admin = () => {
   return (
@@ -12,14 +13,18 @@ const Admin = () => {
       <div className="adminContainer">
         <Navbar />
         <div className="widgets">
-          <Widget />
-          <Widget />
-          <Widget />
-          <Widget />
+          <Widget type="user" />
+          <Widget type="earning" />
+          <Widget type="balance" />
+          <Widget type="balance" />
         </div>
         <div className="charts">
           <Featured />
-          <Chart />
+          <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
+        </div>
+        <div className="adminListContainer">
+          <div className="listTitle">Latest Transactions</div>
+          <Table />
         </div>
       </div>
     </div>

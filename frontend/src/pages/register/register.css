@@ -1,4 +1,4 @@
-.login {
+.register {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -6,30 +6,31 @@
   justify-content: center;
 }
 
-.login > form {
+.register > form {
+  /* border: 1px solid black; */
   padding: 10px;
   width: 30%;
   display: flex;
   flex-direction: column;
 }
 
-.login > form > h1 {
+.register > form > h1 {
   font-size: 32px;
   text-align: center;
   color: grey;
 }
 
-.login > form > .lInput {
+.register > form > .rInput {
   padding: 10px;
   margin-bottom: 10px;
   outline: none;
 }
 
-.login > form > .lInput::placeholder {
+.register > form > .rInput::placeholder {
   text-transform: capitalize;
 }
 
-.lButton {
+.register > form > .rButton {
   width: 100%;
   border: none;
   padding: 10px 20px;
@@ -38,9 +39,4 @@
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
-}
-
-.lButton:disabled {
-  background-color: #0071c28c;
-  cursor: not-allowed;
 }

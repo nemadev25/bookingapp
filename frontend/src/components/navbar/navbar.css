@@ -20,6 +20,10 @@
   text-transform: uppercase;
 }
 
+.navbar span {
+  cursor: pointer;
+}
+
 .navButton {
   margin-left: 20px;
   border: none;

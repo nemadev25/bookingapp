@@ -20,30 +20,34 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <span className="logo">nemadmin</span>
+        <Link to="/admin">
+          <span className="logo">nemadmin</span>
+        </Link>
       </div>
       <hr />
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
           <li>
-            <Dashboard className="icon" />
-            <span>Dashboard</span>
+            <Link to="/admin">
+              <Dashboard className="icon" />
+              <span>Dashboard</span>
+            </Link>
           </li>
           <p className="title">LISTS</p>
-          <Link to="/users">
+          <Link to="/admin/users">
             <li>
               <PersonOutline className="icon" />
               <span>Users</span>
             </li>
           </Link>
-          <Link to="/hotels">
+          <Link to="/admin/hotels">
             <li>
               <Store className="icon" />
               <span>Hotels</span>
             </li>
           </Link>
-          <Link to="/rooms">
+          <Link to="/admin/rooms">
             <li>
               <CreditCard className="icon" />
               <span>Rooms</span>
@@ -86,7 +90,7 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
-      <div className="bottom">
+      <div className="sidebar__bottom">
         <div className="colorOption"></div>
         <div className="colorOption"></div>
       </div>

@@ -43,6 +43,11 @@
   cursor: pointer;
 }
 
+.center ul li a {
+  display: flex;
+  align-items: center;
+}
+
 .center ul li:hover {
   background-color: #ece8ff;
 }
@@ -60,7 +65,7 @@
 }
 
 /* bottom */
-.bottom {
+.sidebar__bottom {
   display: flex;
   align-items: center;
   margin: 10px;

@@ -16,3 +16,16 @@
 .charts {
   padding: 5px 20px;
 }
+
+.admin .adminContainer .adminListContainer{
+  -webkit-box-shadow:2pxx 4p 10p 1px rgba(0,0,0,0.47);
+  box-shadow:2pxx 4p 10p 1px rgba(0,0,0,0.47);
+  padding: 20px;
+  margin: 20px;
+}
+
+.admin .adminContainer .adminListContainer .listTitle{
+font-weight: 500;
+color: gray;
+margin-bottom: 15px;
+}
